@@ -6,10 +6,18 @@
 	let items = ['Current Polls', 'Add New Poll'];
 	let activeItem = 'Current Polls';
 
+	const tabChange = (e) => {
+		activeItem = e.detail;
+	}
 </script>
 <Header />
 <main>
-<Tabs {activeItem} {items}/>
+	<Tabs {activeItem} {items} on:tabChange={tabChange}/>
+	{#if activeItem === 'Current Polls'}
+		<p>Poll list componenet goes here</p>
+	{:else if activeItem === 'Add New Poll'}
+		<p>New poll form componenet</p>
+	{/if}
 </main>
 <Footer />
 <style>
