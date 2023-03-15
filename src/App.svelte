@@ -10,6 +10,24 @@
 	const tabChange = (e) => {
 		activeItem = e.detail;
 	}
+
+	let polls = [
+    {
+      id: 1,
+      question: 'Python or JavaScript?',
+      answerA: 'Python',
+      answerB: 'JavaScript',
+      votesA: 9,
+      votesB: 15,
+    },
+  ];
+
+const handleAdd = (e) => {
+	const poll = e.detail;
+	/// the ... is a spread operator just adds everything you have in the polls object neatly I think
+	polls = [poll, ...polls];
+}
+
 </script>
 <Header />
 <main>
@@ -17,7 +35,7 @@
 	{#if activeItem === 'Current Polls'}
 		<p>Poll list componenet goes here</p>
 	{:else if activeItem === 'Add New Poll'}
-		<CreatePollForm />
+		<CreatePollForm on:add={handleAdd}/>
 	{/if}
 </main>
 <Footer />
