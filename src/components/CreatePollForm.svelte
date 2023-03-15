@@ -3,7 +3,7 @@
     import Button from '../shared/Button.svelte';
 
 
-    let dipatch = createEventDispatcher();
+    let dispatch = createEventDispatcher();
     let fields = { question: '', answerA: '', answerB: '' };
     let errors = { question: '', answerA: '', answerB: '' };
     let valid = false;
