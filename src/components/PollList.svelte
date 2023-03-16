@@ -6,7 +6,8 @@
 <div class="poll-list">
     {#each polls as poll (poll.id)}
         <div>
-              <PollDetails {poll}/>
+            <!--so from here we foward the click event we sent from the poll list to the app .svelte-->
+              <PollDetails {poll} on:vote/>
         
         </div>
     {/each}
