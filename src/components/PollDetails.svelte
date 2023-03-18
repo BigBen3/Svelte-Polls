@@ -1,15 +1,16 @@
 <script>
+  import PollStore from '../stores/pollStore.js';
   import Card from '../shared/Card.svelte';
-  import PollStore from '../stores/PollStore.js';
+
   export let poll;
- 
+  
   // reactive values
   $: totalVotes = poll.votesA + poll.votesB;
   $: percentA = Math.floor(100 / totalVotes * poll.votesA) || 0;
   $: percentB = Math.floor(100 / totalVotes * poll.votesB) || 0;
   // handling votes
   const handleVote = (option, id) => {
-    PollStore.update(currentPolls => {
+      PollStore.update(currentPolls => {
       let copiedPolls = [...currentPolls];
       let upvotedPoll = copiedPolls.find(poll => poll.id == id);
       if(option === 'a'){
@@ -37,6 +38,7 @@
     </div>
   </div>
 </Card>
+
 
 <style>
   h3{
