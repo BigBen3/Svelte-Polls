@@ -1,5 +1,5 @@
 <script>
-    export let type = 'secondary';
+    export let type = 'primary';
     export let flat = false;
     export let inverse = false;
   </script>
