@@ -1,16 +1,18 @@
 
 <script>
+    import { onMount } from 'svelte';
+    import { onDestroy } from 'svelte';
     import PollStore from '../stores/pollStore.js';
     import PollDetails from './PollDetails.svelte';
-    let polls = [];
-    PollStore.subscribe(data => {
-      console.log(data);
-      polls = data;
-    });
+
+   
+
+  
   </script>
   
   <div class="poll-list">
-    {#each polls as poll (poll.id)}
+    <!--access the data in the store direclty and unscirbes autmoaticaly so there are no memory leaks -->
+    {#each $PollStore as poll (poll.id)}
       <div>
           <!--so from here we foward the click event we sent from the poll list to the app .svelte-->
         <PollDetails {poll} on:vote />
