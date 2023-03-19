@@ -2,6 +2,8 @@
   import { onMount, onDestroy } from 'svelte';
   import PollStore from '../stores/pollStore.js';
   import PollDetails from './PollDetails.svelte';
+  import  {fade, slide, scale } from 'svelte/transition';
+  import { flip } from 'svelte/animate';
   let polls = [];
   // const unsub = PollStore.subscribe(data => {
   //   console.log(data);
@@ -21,7 +23,8 @@
 <div class="poll-list">
      <!--access the data in the store direclty and unscirbes autmoaticaly so there are no memory leaks -->
   {#each $PollStore as poll (poll.id)}
-    <div>
+  <!--local means that one when this div is added or removed is the transition applied -->
+    <div in:fade out:scale|local animate:flip={{duration:500}}>
        <!--so from here we foward the click event we sent from the poll list to the app .svelte-->
       <PollDetails {poll} on:vote />
     </div>
